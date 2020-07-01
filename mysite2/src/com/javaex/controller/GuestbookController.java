@@ -20,7 +20,7 @@ public class GuestbookController extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/guestbook ---> doGet()");
+		System.out.println("/guestbook");
 		
 		String action = request.getParameter("action");
 		
@@ -60,7 +60,7 @@ public class GuestbookController extends HttpServlet {
 			System.out.println("게스트 삭제폼");
 			
 			//포워드
-			WebUtil.forward(request, response, "/WEB-INF/views/user/deleteForm.jsp");
+			WebUtil.forward(request, response, "/WEB-INF/views/guestbook/deleteForm.jsp");
 					
 		}else if ("delete".equals(action)) {
 			System.out.println("게스트 삭제");
