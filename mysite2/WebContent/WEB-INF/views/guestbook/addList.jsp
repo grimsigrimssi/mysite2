@@ -36,8 +36,8 @@
        	<!-- //content-head -->
 					
 		<div id="guestbook">		
-			<form action="/WEB-INF/views/guestbook/addList.jsp" method="get">
-				 <table id="guestAdd">
+				<form action="/WEB-INF/views/guestbook/addList.jsp" method="get">
+				 	<table id="guestAdd">
 						<colgroup>
 							<col style="width: 70px;">
 							<col>
