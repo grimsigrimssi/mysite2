@@ -36,7 +36,9 @@
 			<!-- //content-head -->
 
 			<div id="board">
+			
 				<div id="list">
+				
 					<form action="/WEB-INF/views/board/list.jsp" method="get">
 						<div class="form-group text-right">
 							<input type="text">

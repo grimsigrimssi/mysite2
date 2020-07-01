@@ -139,7 +139,7 @@ public class BoardDao {
 						boardList.add(boardVo);
 					}
 
-				} catch (SQLException e) {
+				} catch(SQLException e) {
 					System.out.println("error:" + e);
 				}
 
@@ -159,7 +159,7 @@ public class BoardDao {
 					String query = ""; // 쿼리문 문자열만들기, ? 주의
 					query += " delete from board_list ";
 					query += " where no = ? ";
-					pstmt = conn.prepareStatement(query); // 물음표 처리 전 리로 만들기
+					pstmt = conn.prepareStatement(query); // 물음표 처리 전 쿼리로 만들기
 
 					pstmt.setInt(1, no);// ?(물음표) 중 1번째, 순서중요
 
@@ -168,7 +168,7 @@ public class BoardDao {
 					// 4.결과처리
 					// System.out.println(count + "건 삭제되었습니다.");
 
-				} catch (SQLException e) {
+				} catch(SQLException e) {
 					System.out.println("error:" + e);
 				}
 
@@ -177,7 +177,7 @@ public class BoardDao {
 			}
 			
 			//게시글 정보
-			public BoardVo getBoard (int no) {
+			public BoardVo getBoard(int no) {
 					
 				BoardVo boardVo = null;
 					
@@ -196,14 +196,14 @@ public class BoardDao {
 					query += " from board_list";
 					query += " where no = ? ";
 					
-					pstmt = conn.prepareStatement(query); //  물음표 처리 전 리로 만들기
+					pstmt = conn.prepareStatement(query); //  물음표 처리 전 쿼리로 만들기
 					pstmt.setInt(1, no); // ?(물음표) 중 1번째 , 순서중요
 			
 
 					rs = pstmt.executeQuery();
 
 					// 4.결과처리
-					while (rs.next()) {
+					while(rs.next()) {
 						int num = rs.getInt("no");
 						String title = rs.getString("title");
 						String name = rs.getString("name");
@@ -214,7 +214,7 @@ public class BoardDao {
 						boardVo = new BoardVo(no, title, name, count, date, status);
 					}
 
-				} catch (SQLException e) {
+				} catch(SQLException e) {
 						System.out.println("error:" + e);
 				}
 
