@@ -65,17 +65,18 @@ public class BoardDao {
 
 					// 3. SQL문 준비 / 바인딩 / 실행
 					String query = ""; // 쿼리문 문자열만들기, ? 주의
-					query += " INSERT INTO board_list ";
-					query += " VALUES (seq_no.nextval, ?, ?, ?, ?, ?) ";
+					query += " INSERT INTO board ";
+					query += " VALUES (seq_no.nextval, ?, ?, ?, ?, ?, ?) ";
 					// System.out.println(query);
 
 					pstmt = conn.prepareStatement(query); // 물음표 값 넣기 전 쿼리로 만들기
 
 					pstmt.setString(1, vo.getTitle()); // ?(물음표) 중 1번째, 순서중요
-					pstmt.setString(2, vo.getName()); 
-					pstmt.setInt(3, vo.getCount()); 
-					pstmt.setString(4, vo.getDate());
-					pstmt.setString(5, vo.getStatus());
+					pstmt.setString(2, vo.getContent()); 
+					pstmt.setString(3, vo.getName()); 
+					pstmt.setInt(4, vo.getHit());
+					pstmt.setString(5, vo.getReg_date());
+					pstmt.setInt(5, vo.getUser_no());
 					count = pstmt.executeUpdate(); // 쿼리문 실행
 
 					// 4.결과처리
@@ -105,21 +106,24 @@ public class BoardDao {
 					String query = "";
 					query += " select  no, ";
 					query += "         title, ";
+					query += "         content, ";
 					query += "         name, ";
-					query += "         count, ";
+					query += "         hit, ";
 					query += "         to_char(sysdate, 'YYYY-MM-DD') as date, ";
-					query += "         status ";
-					query += " from board_list";
+					query += "         user_no ";
+					query += " from board ";
 
 					if (keyword != "" || keyword == null) {
-						query += " where tilte like ? ";
+						query += " where title like ? ";
+						query += " or content like ? ";
 						query += " or name like ? ";
 						query += " or date like ? ";
 						pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
-						pstmt.setString(1, '%' + keyword + '%'); // ?(물음표) 중 1번째, 순서중요
-						pstmt.setString(2, '%' + keyword + '%'); // ?(물음표) 중 2번째, 순서중요
-						pstmt.setString(4, '%' + keyword + '%'); // ?(물음표) 중 3번째, 순서중요
+						pstmt.setString(1, '%' + keyword + '%'); 
+						pstmt.setString(2, '%' + keyword + '%'); 
+						pstmt.setString(3, '%' + keyword + '%'); 
+						pstmt.setString(5, '%' + keyword + '%'); 
 					} else {
 						pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 					}
@@ -130,12 +134,14 @@ public class BoardDao {
 					while (rs.next()) {
 						int no = rs.getInt("no");
 						String title = rs.getString("title");
+						String content = rs.getString("content");
 						String name = rs.getString("name");
-						int count = rs.getInt("count");
-						String date = rs.getString("date");
-						String status = rs.getString("status");
+						int hit = rs.getInt("hit");
+						String reg_date = rs.getString("reg_date");
+						int user_no = rs.getInt("user_no");
+						
 
-						BoardVo boardVo = new BoardVo(no, title, name, count, date, status);
+						BoardVo boardVo = new BoardVo(no, title, content, name, hit, reg_date, user_no);
 						boardList.add(boardVo);
 					}
 
@@ -157,7 +163,7 @@ public class BoardDao {
 				try {
 					// 3. SQL문 준비 / 바인딩 / 실행
 					String query = ""; // 쿼리문 문자열만들기, ? 주의
-					query += " delete from board_list ";
+					query += " delete from board ";
 					query += " where no = ? ";
 					pstmt = conn.prepareStatement(query); // 물음표 처리 전 쿼리로 만들기
 
@@ -189,11 +195,12 @@ public class BoardDao {
 					String query = "";
 					query += " select  no, ";
 					query += "         title, ";
+					query += "         content, ";
 					query += "         name, ";
-					query += "         count, ";
-					query += "         to_char(sysdate, 'YYYY-MM-DD') as date, ";
-					query += "         status ";
-					query += " from board_list";
+					query += "         hit, ";
+					query += "         to_char(sysdate, 'YYYY-MM-DD') as reg_date, ";
+					query += "         user_no ";
+					query += " from board ";
 					query += " where no = ? ";
 					
 					pstmt = conn.prepareStatement(query); //  물음표 처리 전 쿼리로 만들기
@@ -206,12 +213,13 @@ public class BoardDao {
 					while(rs.next()) {
 						int num = rs.getInt("no");
 						String title = rs.getString("title");
+						String content = rs.getString("content");;
 						String name = rs.getString("name");
-						int count = rs.getInt("count");
-						String date = rs.getString("date");
-						String status = rs.getString("status");
+						int hit = rs.getInt("hit");
+						String reg_date = rs.getString("reg_date");
+						int user_no = rs.getInt("user_no");
 
-						boardVo = new BoardVo(no, title, name, count, date, status);
+						boardVo = new BoardVo(no, title, content, name, hit, reg_date, user_no);
 					}
 
 				} catch(SQLException e) {
