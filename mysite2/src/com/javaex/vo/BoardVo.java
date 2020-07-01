@@ -20,6 +20,14 @@ public class BoardVo {
 		this.title = title;
 		this.content = content;
 	}
+	
+	public BoardVo(int no, String title, String name, int count, String date) {
+		this.no = no;
+		this.title = title;
+		this.name = name;
+		this.count = count;
+		this.date = date;
+	}
 		
 	public BoardVo(int no, String name, String password, String title, String content, String date, int count) {
 		this.no = no;
