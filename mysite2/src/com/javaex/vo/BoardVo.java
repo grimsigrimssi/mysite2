@@ -9,6 +9,7 @@ public class BoardVo {
 	private String content;
 	private String date;
 	private int count;
+	private String status;
 	
 	public BoardVo() {
 		
@@ -21,15 +22,16 @@ public class BoardVo {
 		this.content = content;
 	}
 	
-	public BoardVo(int no, String title, String name, int count, String date) {
+	public BoardVo(int no, String title, String name, int count, String date, String status) {
 		this.no = no;
 		this.title = title;
 		this.name = name;
 		this.count = count;
 		this.date = date;
+		this.status = status;
 	}
 		
-	public BoardVo(int no, String name, String password, String title, String content, String date, int count) {
+	public BoardVo(int no, String name, String password, String title, String content, String date, int count, String Status) {
 		this.no = no;
 		this.name = name;
 		this.password = password;
@@ -37,7 +39,9 @@ public class BoardVo {
 		this.content = content;
 		this.date = date;
 		this.count = count;
+		this.status = status;
 	}
+
 
 	public int getNo() {
 		return no;
@@ -94,11 +98,19 @@ public class BoardVo {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVo [no=" + no + ", name=" + name + ", password=" + password + ", title=" + title + ", content="
-				+ content + ", date=" + date + ", count=" + count + "]";
+				+ content + ", date=" + date + ", count=" + count + ", status=" + status + "]";
 	}
 	
 	
