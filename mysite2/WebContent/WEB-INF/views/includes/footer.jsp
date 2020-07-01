@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
     
     <div id="footer">
-		Copyright ⓒ 2021 정우성. All rights reserved.
+		Copyright ⓒ 2020 박서경. All rights reserved.
 	</div>
