@@ -13,33 +13,31 @@
 </head>
 <body>
 	
-		<div id="wrap">
+	<div id="wrap">
 	
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //header & navi -->
-		
+	
 		<c:import url="/WEB-INF/views/includes/asideUser.jsp"></c:import>
 		<!-- //aside -->
-	
+
 		<div id="content">
-			<h3>방명록</h3>
+		
+			<h3>일반방명록</h3>
 			<div id="location">
-					<ul>
-						<li>홈</li>
-						<li>방명록</li>
-						<li class="last">일반방명록</li>			
-					</ul>		
+				<ul>
+					<li>홈</li>
+					<li>방명록</li>
+					<li class="last">일반방명록</li>			
+				</ul>		
 			</div>
 			<div class="clear"></div>
-         </div>
-         <!-- //content-head -->
-			
-		
-		<div id="guestbook">
-		
-				<form action="/WEB-INF/views/guestbook/addList.jsp" method="get">
-			
-					<table border="1">
+       	</div>
+       	<!-- //content-head -->
+					
+		<div id="guestbook">		
+			<form action="/WEB-INF/views/guestbook/addList.jsp" method="get">
+				 <table id="guestAdd">
 						<colgroup>
 							<col style="width: 70px;">
 							<col>
@@ -65,28 +63,28 @@
 					<!-- //guestWrite -->
 					<input type="hidden" name="action" value="add">
 										
-				</form><br>
+				</form>
 				
-					
+				
 				<c:forEach items="${gList }" var="vo" varStatus="status">
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>		
-						<tr>
-							<td>${vo.no }</td>
-							<td>${vo.name }</td>
-							<td>${vo.regDate }</td>
-							<td><a href="/mysite2/guestbook?action=deleteForm&delGeust=${vo.no }">삭제</a></td>
-						</tr>
-						<tr>
-						 	<td colspan="4" class="text-left">${vo.content }</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->	
+				<table class="guestRead">
+					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 40%;">
+						<col style="width: 40%;">
+						<col style="width: 10%;">
+					</colgroup>		
+					<tr>
+						<td>${vo.no }</td>
+						<td>${vo.name }</td>
+						<td>${vo.regDate }</td>
+						<td><a href="/mysite2/guestbook?action=deleteForm&delGeust=${vo.no }">삭제</a></td>
+					</tr>
+					<tr>
+					 	<td colspan="4" class="text-left">${vo.content }</td>
+					</tr>
+				</table>
+				<!-- //guestRead -->	
 				</c:forEach>							
 											
 			</div>
