@@ -45,7 +45,7 @@
 							<button type="submit" id=btn_search>검색</button>
 						</div>
 						
-						<input type="hidden" name="action" value="">
+						<input type="hidden" name="action" value="list">
 					</form>
 					<table >
 						<thead>
