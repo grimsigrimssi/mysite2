@@ -54,7 +54,7 @@ public class GuestbookController extends HttpServlet {
 			
 			
 			//리다이렉트
-			WebUtil.redirect(request, response, "/mysite2/guestbook/addList");
+			WebUtil.redirect(request, response, "/mysite2/guestbook?action=addList");
 			
 		}else if ("deleteForm".equals(action)) {
 			System.out.println("게스트 삭제폼");
