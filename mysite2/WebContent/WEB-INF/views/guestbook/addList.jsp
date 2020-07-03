@@ -78,7 +78,7 @@
 						<td>${vo.no }</td>
 						<td>${vo.name }</td>
 						<td>${vo.regDate }</td>
-						<td><a href="/mysite2/guestbook?action=deleteForm&delGeust=${vo.no }">삭제</a></td>
+						<td><a href="/mysite2/guestbook?action=deleteForm&delGuest=${vo.no }">삭제</a></td>
 					</tr>
 					<tr>
 					 	<td colspan="4" class="text-left">${vo.content }</td>
